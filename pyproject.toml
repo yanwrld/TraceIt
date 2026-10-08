@@ -1,0 +1,45 @@
+[project]
+name = "traceit"
+version = "0.1.0"
+description = "Trace simulation toolkit"
+readme = "README.md"
+authors = [
+    { name = "Ryan Liu", email = "62452180+yanwrld@users.noreply.github.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.4.6",
+    "plotly>=7.1.0",
+    "scikit-rf>=2.1.0",
+    "scipy>=1.17.1",
+]
+
+[project.optional-dependencies]
+app = [
+    "streamlit>=1.65.0",
+]
+ml = [
+    "scikit-learn>=1.9.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["slow: long-running validation tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY"]
