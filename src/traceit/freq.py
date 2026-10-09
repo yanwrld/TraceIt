@@ -26,9 +26,9 @@ class FrequencyGrid:
 
     @classmethod
     def from_resolution(cls, f_max: float, df: float) -> "FrequencyGrid":
-        # grid with spacing <= df rounded to land on discrete poin t
+        # grid with spacing <= df rounded to land on discrete point
         if df <= 0 or df > f_max:
-            raise ValueError("need 0 < df < f_max")
+            raise ValueError("need 0 < df <= f_max")
         return cls(f_max=f_max, n=int(np.ceil(f_max / df)) + 1)
 
     @cached_property
